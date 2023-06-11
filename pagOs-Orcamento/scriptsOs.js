@@ -1,16 +1,15 @@
-
-
 function atualizarOrdens() {
-    const ul = document.getElementById('listaOrdens')
+
+    const ul = document.getElementById('listaOrdensServico')
     ul.innerHTML = ''
 
-    fetch('https://pi2sem-sistemaos.onrender.com/ordensdeservico')
+    const ordensDeServico = fetch('https://pi2sem-sistemaos.onrender.com/ordensdeservico')
         .then(resposta => resposta.json())
         .then(ordens => {
+
             ordens.forEach(ordem => {
                 const li = document.createElement('li')
                 li.innerText = `${ordem.cliente_id} | ${ordem.produto_id} | ${ordem.data_abertura} | ${ordem.status}`
-
                 // btn excluir
                 const btnDelete = document.createElement('button')
                 btnDelete.innerText = "Excluir ordem"
@@ -18,12 +17,13 @@ function atualizarOrdens() {
                     deletarOrdem(ordem.id))
                 li.appendChild(btnDelete)
 
+                const ul = document.getElementById('listaOrdensServico')
                 ul.appendChild(li)
             });
         })
 }
 
-const formOrdem = document.getElementById('CadastroOrdem')
+const formOrdem = document.getElementById('CadastroOrdensServico')
 formOrdem.addEventListener('submit', (event) => {
     event.preventDefault()
     cadastrarOrdem(event)

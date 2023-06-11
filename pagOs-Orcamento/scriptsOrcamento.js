@@ -1,6 +1,6 @@
 function atualizarOrcamentos() {
     const ul = document.getElementById('listaOrcamentos');
-    ul.innerHTML = '';
+    ul.innerHTML = ''
 
     fetch('https://pi2sem-sistemaos.onrender.com/orcamentos')
         .then(resposta => resposta.json())

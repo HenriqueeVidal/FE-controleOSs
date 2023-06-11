@@ -18,7 +18,6 @@ function atualizarClientes() {
                     deletarCliente(clientes.id))
                 li.appendChild(btnDelete)
 
-                const ul = document.getElementById('listaClientes')
                 ul.appendChild(li)
             });
         })
